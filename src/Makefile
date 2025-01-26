@@ -7,7 +7,7 @@ ZLIB?=0
 
 DESTDIR?=/
 PREFIX?=/usr
-SBINDIR=$(PREFIX)/sbin
+SBINDIR=$(PREFIX)/bin
 MANDIR=$(PREFIX)/share/man
 DATADIR=$(PREFIX)/share
 INSTALL?=install -p

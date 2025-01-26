@@ -22,7 +22,7 @@
 #endif
 
 #ifndef SBINDIR
-#define SBINDIR PREFIX"/sbin"
+#define SBINDIR PREFIX"/bin"
 #endif
 
 #ifndef DATADIR

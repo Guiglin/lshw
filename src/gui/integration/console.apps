@@ -1,3 +1,3 @@
 USER=root
-PROGRAM=/usr/sbin/gtk-lshw
+PROGRAM=/usr/bin/gtk-lshw
 SESSION=true
