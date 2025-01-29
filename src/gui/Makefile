@@ -9,17 +9,16 @@ OBJCOPY?=objcopy
 DEFINES=-DPREFIX=\"$(PREFIX)\" -DSBINDIR=\"$(SBINDIR)\" -DMANDIR=\"$(MANDIR)\" -DDATADIR=\"$(DATADIR)\"
 GTKINCLUDES=$(shell $(PKG_CONFIG) gtk+-3.0 --cflags)
 INCLUDES=-I../core $(GTKINCLUDES)
-CXXFLAGS=-g -Wall $(INCLUDES) $(DEFINES) $(RPM_OPT_FLAGS)
+CXXFLAGS+=-Wall $(INCLUDES) $(DEFINES) $(RPM_OPT_FLAGS)
 ifeq ($(SQLITE), 1)
 	CXXFLAGS+= -DSQLITE $(shell $(PKG_CONFIG) --cflags sqlite3)
 endif
-CFLAGS=$(CXXFLAGS) -g $(DEFINES)
+CFLAGS+=$(CXXFLAGS) $(DEFINES)
 GTKLIBS=$(shell $(PKG_CONFIG) gtk+-3.0 gmodule-2.0 --libs)
 LIBS+=-L../core -llshw -lresolv $(GTKLIBS)
 ifeq ($(SQLITE), 1)
 	LIBS+= $(shell $(PKG_CONFIG) --libs sqlite3)
 endif
-LDFLAGS=
 ifneq ($(shell $(LD) --help 2| grep -- --as-needed), )
 	LDFLAGS+= -Wl,--as-needed
 endif
